@@ -3,16 +3,20 @@
 @{
 }
  
-<div class="text-center">
-<form method=”POST”>
-  <label for="nombre" class="form-label">nombre:</label>
-  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre">
-  <label for="apellidos" class="form-label">apellidos:</label>
-  <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="apellidos">
-  <label for="direccion" class="form-label">direccion:</label>
-  <input type="direccion" class="form-control" id="direccion" name="direccion" placeholder="Email">
-   <label for="telefono" class="form-label">telefono:</label>
-  <input type="number" class="form-control" id="telefono" name="telefono" placeholder="telefono">
+<div class = "text-center">
+<form method = "POST">
+  <label asp-for="Usuario.nombre" class="form-label">nombre:</label>
+  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required minlength="3"  asp-for="Usuario.nombre">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
+  <label asp-for="Usuario.apellidos" class="form-label">apellidos:</label>
+  <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="apellidos" required minlength="3"  asp-for="Usuario.apellidos">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
+  <label asp-for="Usuario.direccion" class="form-label">direccion:</label>
+  <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" required minlength="3"  asp-for="Usuario.direccion">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
+  <label asp-for="Usuario.telefono" class="form-label">telefono:</label>
+  <input type="number" class="form-control" id="telefono" name="telefono" placeholder="telefono" required minlength="3"  asp-for="Usuario.telefono">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
   <hr>
   <button type="submit" class="btn btn-success">Enviar</button>
 </form>

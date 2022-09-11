@@ -6,34 +6,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProyectoCiclo3.App.Persistencia.AppRepositorios;
 using ProyectoCiclo3.App.Dominio;
-
+ 
 namespace ProyectoCiclo3.App.Frontend.Pages
 {
-    public class FormServicioModel : PageModel
+    public class EditServicioModel : PageModel
     {
-        private readonly RepositorioServicios repositorioServicios;
-        [BindProperty]
+       private readonly RepositorioServicios repositorioServicios;
+       [BindProperty]
         public Servicio Servicio {get;set;}
  
-        public FormServicioModel(RepositorioServicios repositorioServicios)
+        public EditServicioModel(RepositorioServicios repositorioServicios)
        {
             this.repositorioServicios=repositorioServicios;
        }
  
-        public void OnGet()
+        public IActionResult OnGet(int servicioId)
         {
- 
+            Servicio=repositorioServicios.GetWithId(servicioId);
+            return Page(); 
         }
- 
+
         public IActionResult OnPost()
         {
             if(!ModelState.IsValid)
             {
                 return Page();
-            }            
-            repositorioServicios.Create(Servicio);            
+            }
+            if(Servicio.id>0)
+            {
+            Servicio = repositorioServicios.Update(Servicio);
+            }
             return RedirectToPage("./List");
         }
-    }
 
+    }
 }

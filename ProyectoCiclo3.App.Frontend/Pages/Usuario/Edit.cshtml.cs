@@ -6,34 +6,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProyectoCiclo3.App.Persistencia.AppRepositorios;
 using ProyectoCiclo3.App.Dominio;
-
+ 
 namespace ProyectoCiclo3.App.Frontend.Pages
 {
-    public class FormUsuarioModel : PageModel
+    public class EditUsuarioModel : PageModel
     {
-        private readonly RepositorioUsuarios repositorioUsuarios;
-        [BindProperty]
+       private readonly RepositorioUsuarios repositorioUsuarios;
+       [BindProperty]
         public Usuario Usuario {get;set;}
  
-        public FormUsuarioModel(RepositorioUsuarios repositorioUsuarios)
+        public EditUsuarioModel(RepositorioUsuarios repositorioUsuarios)
        {
             this.repositorioUsuarios=repositorioUsuarios;
        }
  
-        public void OnGet()
+        public IActionResult OnGet(int usuarioId)
         {
- 
+            Usuario=repositorioUsuarios.GetWithId(usuarioId);
+            return Page(); 
         }
- 
+
         public IActionResult OnPost()
         {
             if(!ModelState.IsValid)
             {
                 return Page();
-            }            
-            repositorioUsuarios.Create(Usuario);            
+            }
+            if(Usuario.id>0)
+            {
+            Usuario = repositorioUsuarios.Update(Usuario);
+            }
             return RedirectToPage("./List");
         }
-    }
 
+    }
 }

@@ -3,16 +3,23 @@
 @{
 }
  
-<div class="text-center">
-<form method=”POST”>
-  <label for="origen" class="form-label">origen:</label>
-  <input type="text" class="form-control" id="origen" name="origen" placeholder="origen">
+<div class = "text-center">
+<form method = "POST">
+  <label asp-for="Servicio.origen" class="form-label">origen:</label>
+  <input type="text" class="form-control" id="origen" name="origen" placeholder="origen" required minlength="3"  asp-for="Servicio.origen">
+  <span class="text-danger" asp-validation-for="Servicio.origen"></span> <br>
   <label for="destino" class="form-label">destino:</label>
-  <input type="text" class="form-control" id="destino" name="destino" placeholder="destino">
+  <input type="number" class="form-control" id="destino" name="destino" placeholder="destino" asp-for="Servicio.destino">
+  <span class="text-danger" asp-validation-for="Servicio.origen"></span> <br>
   <label for="fecha" class="form-label">fecha:</label>
-  <input type="number" class="form-control" id="fecha" name="fecha" placeholder="fecha">
+  <input type="number" class="form-control" id="fecha" name="fecha" placeholder="fecha" asp-for="Servicio.fecha">
+  <span class="text-danger" asp-validation-for="Servicio.origen"></span> <br>
   <label for="hora" class="form-label">hora:</label>
-  <input type="number" class="form-control" id="hora" name="hora" placeholder="hora">
+  <input type="number" class="form-control" id="hora" name="hora" placeholder="hora" asp-for="Servicio.hora">
+  <span class="text-danger" asp-validation-for="Servicio.origen"></span> <br>
+  <label for="encomienda" class="form-label">encomienda:</label>
+  <input type="number" class="form-control" id="encomienda" name="encomienda" placeholder="encomienda" asp-for="Servicio.encomienda">
+  <span class="text-danger" asp-validation-for="Servicio.origen"></span> <br>
   <hr>
   <button type="submit" class="btn btn-success">Enviar</button>
 </form>
